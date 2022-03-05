@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_filled_start_rate" android:state_pressed="true" android:state_window_focused="true" />
+    <item android:drawable="@drawable/ic_filled_start_rate" android:state_pressed="true" android:state_window_focused="true" tools:ignore="StateListReachable" />
+    <item android:drawable="@drawable/ic_filled_start_rate" android:state_pressed="true" android:state_window_focused="true" />
+    <item android:drawable="@drawable/ic_filled_start_rate" />
+</selector>
