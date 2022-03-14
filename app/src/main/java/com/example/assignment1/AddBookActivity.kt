@@ -25,7 +25,6 @@ class AddBookActivity : AppCompatActivity() {
         binding = ActivityAddBookBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-
         if (intent.getSerializableExtra("book") != null) {
             /*in edit book case*/
             val myBook = intent.getSerializableExtra("book") as Book
@@ -84,8 +83,10 @@ class AddBookActivity : AppCompatActivity() {
             /* in add book case*/
             binding.btnDelete.visibility = View.GONE
             binding.btnAdd.setOnClickListener {
-                if (binding.edName.text.isNotEmpty() && binding.edAuthor.text.isNotEmpty()
-                    && binding.edYear.text.isNotEmpty() && binding.edPrice.text.isNotEmpty()
+                if (binding.edName.text.isNotEmpty()
+                    && binding.edAuthor.text.isNotEmpty()
+                    && binding.edYear.text.isNotEmpty()
+                    && binding.edPrice.text.isNotEmpty()
                     && binding.ratingBar2.rating != 0.0f
                 ) {
                     val dateFormat = SimpleDateFormat("yyyy-MM-dd")

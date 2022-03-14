@@ -27,12 +27,12 @@ class MainActivity : AppCompatActivity() {
 
         binding.rcyBooks.adapter = RecyclerBookAdapter(this, myBooks)
         binding.rcyBooks.layoutManager = LinearLayoutManager(this)
-        binding.rcyBooks.addItemDecoration(
-            DividerItemDecoration(
-                this,
-                DividerItemDecoration.VERTICAL
-            )
-        )
+//        binding.rcyBooks.addItemDecoration(
+//            DividerItemDecoration(
+//                this,
+//                DividerItemDecoration.VERTICAL
+//            )
+//        )
         /*retrieve data from firestore*/
         getBooks()
 
