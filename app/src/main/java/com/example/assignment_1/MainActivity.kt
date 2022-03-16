@@ -1,14 +1,13 @@
-package com.example.assignment1
+package com.example.assignment_1
 
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.assignment1.Adapter.RecyclerBookAdapter
-import com.example.assignment1.databinding.ActivityMainBinding
-import com.example.assignment1.model.Book
+import com.example.assignment_1.Adapter.RecyclerBookAdapter
+import com.example.assignment_1.databinding.ActivityMainBinding
+import com.example.assignment_1.model.Book
 import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -54,6 +53,7 @@ class MainActivity : AppCompatActivity() {
                                 (document["year"] as Timestamp).toDate(),
                                 document["rates"].toString().toFloat(),
                                 document["price"].toString().toInt(),
+                                document["image"].toString()
                             )
                         )
                     }
@@ -73,4 +73,5 @@ class MainActivity : AppCompatActivity() {
         }
         super.onResume()
     }
+
 }

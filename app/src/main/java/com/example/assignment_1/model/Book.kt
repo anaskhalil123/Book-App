@@ -1,4 +1,4 @@
-package com.example.assignment1.model
+package com.example.assignment_1.model
 
 import com.google.firebase.firestore.Exclude
 import java.io.Serializable
