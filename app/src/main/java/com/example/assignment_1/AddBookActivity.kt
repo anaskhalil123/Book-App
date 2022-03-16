@@ -38,7 +38,7 @@ class AddBookActivity : AppCompatActivity() {
             binding.edPrice.setText(myBook.price.toString())
             binding.ratingBar2.rating = myBook.rates
 
-
+/*
             binding.btnAdd.setOnClickListener {
 
                 val dateFormat = SimpleDateFormat("yyyy-MM-dd")
@@ -66,7 +66,27 @@ class AddBookActivity : AppCompatActivity() {
                         Log.e(TAG, exception.message.toString())
                     }
             }
+*/
+            // update book data
+            binding.btnAdd.setOnClickListener {
+                val dateFormat = SimpleDateFormat("yyyy-MM-dd")
+                val year = binding.edYear.text.toString().toInt()
+                val month = 0
+                val day = 0
+                val date = dateFormat.parse("$year-$month-$day")
+                Log.d(TAG, date!!.toString())
 
+                updateBook(
+                    Book(
+                        null,
+                        binding.edName.text.toString(),
+                        binding.edAuthor.text.toString(),
+                        date,
+                        binding.ratingBar2.rating.toString().toFloat(),
+                        binding.edPrice.text.toString().toInt(),
+                    ), myBook.id!!
+                )
+            }
             binding.btnDelete.setOnClickListener {
                 db.collection("books").document(myBook.id!!).delete()
                     .addOnSuccessListener {
@@ -122,5 +142,26 @@ class AddBookActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun updateBook(book: Book, book_id: String) {
+
+        val data = hashMapOf(
+            "name" to book.name,
+            "author" to book.author,
+            "price" to book.price,
+            "rates" to book.rates,
+            "year" to Timestamp(book.year!!)
+        )
+
+        db.collection("books").document(book_id).update(data as Map<String, Any>)
+            .addOnSuccessListener {
+                Toast.makeText(this, "book updated successfully", Toast.LENGTH_SHORT).show()
+                startActivity(Intent(this, MainActivity::class.java))
+                finish()
+            }
+            .addOnFailureListener { exception ->
+                Log.e(TAG, exception.message.toString())
+            }
     }
 }

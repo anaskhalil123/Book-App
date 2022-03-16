@@ -27,12 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.rcyBooks.adapter = RecyclerBookAdapter(this, myBooks)
         binding.rcyBooks.layoutManager = LinearLayoutManager(this)
-//        binding.rcyBooks.addItemDecoration(
-//            DividerItemDecoration(
-//                this,
-//                DividerItemDecoration.VERTICAL
-//            )
-//        )
+
         /*retrieve data from firestore*/
         getBooks()
 
@@ -50,7 +45,7 @@ class MainActivity : AppCompatActivity() {
                 if (result != null) {
                     for (document in result) {
                         Log.d(TAG, "document id is ${document.id} with data ${document.data}")
-                        Log.d(TAG, "date ${(document["year"] as Timestamp).toDate()}")
+                        Log.d(TAG, "date ${document["year"]}")
                         myBooks.add(
                             Book(
                                 document.id,
@@ -69,14 +64,6 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "error with Exception : $exception")
             }
     }
-
-//    fun convertTimestampToYear(tt: Timestamp): String {
-//        try {
-//            val date = Date(1990)
-//        } catch (e: Exception) {
-//            return "date"
-//        }
-//    }
 
     override fun onResume() {
         if (isChanged) {

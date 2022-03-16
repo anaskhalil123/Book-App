@@ -12,5 +12,6 @@ data class Book(
     var year: Date? = null,
     var rates: Float = 0.0f,
     var price: Int = 0,
+    var image: String = ""
 ) : Serializable
 
